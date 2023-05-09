@@ -76,11 +76,10 @@ def get_sub_sub(table_name, field, subfield, subsubfield):
 def get_table_data(table_name):
     return jsonify(tables[table_name]), 200
 
-#Endpoint for 
+#Endpoint for writing changed grids i.e. _base files
 @app.route('/api/table/<table_name>/', methods = ['POST']) 
 def post_table_data(table_name):
     data = str(request.data)
-    print(data)
     with open("./base/" + table_name + "_base.json", "w") as outfile:
         outfile.write(data)
     return "done", 200
